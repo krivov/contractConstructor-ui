@@ -872,9 +872,104 @@ angular.module('inspinia')
       deployContract.create.apply(this, args);
     };
 
+
+    var FactoriesPromise = new Promise(function (resolve, reject) {
+      mainContract.numFabrics(function (error, numFabrics) {
+
+        var countFabr = 0;
+        for (var i = 0; i < numFabrics.c[0]; i++) {
+          (function(i) {
+            mainContract.fabricsAddr(i, function (error, fabricsAddr) {
+
+              mainContract.fabrics(fabricsAddr, function (error, fabric) {
+
+                console.log("FFF", fabric);
+
+                factories[fabric[0]] = {
+                  addr: fabric[0],
+                  owner: fabric[1]
+                };
+
+                var constructor = getConstructor(fabric[0], 4);
+
+                constructor.title(function (error, fabricTitle) {
+                  factories[fabric[0]].title = fabricTitle;
+                  factories[fabric[0]].params = [];
+
+                  constructor.numParameters(function (error, numParameters) {
+                    factories[fabric[0]].numParameters = numParameters.c[0];
+
+                    for (var j = 0; j < numParameters.c[0]; j++) {
+                      factories[fabric[0]].params[j] = {};
+
+                      (function(j) {
+                        constructor.params(j, function (error, consctructorParams) {
+                          factories[fabric[0]].params[j].title = consctructorParams[0];
+                          factories[fabric[0]].params[j].paramType = consctructorParams[1];
+                        });
+                      })(j);
+                    }
+
+                    countFabr++;
+                    console.log('numParameters', i, numParameters, (numFabrics.c[0]-1), countFabr);
+                    if (countFabr >= numFabrics.c[0]) {
+                      resolve();
+                    }
+                  });
+                });
+              })
+            });
+          })(i);
+        }
+      });
+    });
+
+
+
+    var getCurrentContracts = function () {
+      return new Promise(function (resolve, reject) {
+
+        var account = web3.eth.accounts[0];
+        if (!account) {
+          return reject();
+        }
+
+        var contracts = [];
+        var countContr = 0;
+
+        mainContract.admins(account, function (error, admin) {
+          var countFabr = 0;
+          for (var i = 0; i < admin[1].c[0]; i++) {
+            (function(i) {
+              mainContract.getAdminContract(account, i, function (error, contractAddr) {
+
+                mainContract.contracts(contractAddr, function (error, contract) {
+
+                  console.log("RRR", contract);
+
+                  contracts.push({
+                    addr: contract[0],
+                    fabric: contract[2],
+                    contractType: contract[3]
+                  });
+
+                  countContr++;
+                  console.log('numParameters', i, admin[1].c[0], countContr);
+                  if (countContr >= admin[1].c[0]) {
+                    resolve(contracts);
+                  }
+                })
+              });
+            })(i);
+          }
+        });
+      });
+    };
+
     return {
       setFactories: setFactories,
       factories: factories,
-      deploy: deploy
+      deploy: deploy,
+      getCurrentContracts: getCurrentContracts
     };
   });

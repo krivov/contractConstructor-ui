@@ -3351,6 +3351,21 @@ function constructorsCtrl($scope, MainFabricContract) {
   });
 };
 
+function contractsCtrl($scope, MainFabricContract) {
+
+  $scope.items = [];
+
+  MainFabricContract.getCurrentContracts().then(function (res) {
+    console.log('setFactories().then constructorsCtrl', res);
+    $scope.items.length = 0;
+
+    for (var i=0; i < res.length; i++) {
+      $scope.items.push(res[i]);
+    }
+    $scope.$apply();
+  });
+};
+
 function createContractCtrl($scope, $stateParams, MainFabricContract) {
 
   console.log('IN CREATE', $stateParams);
@@ -3395,6 +3410,7 @@ angular
     .controller('MainCtrl', MainCtrl)
     .controller('constructorsCtrl', constructorsCtrl)
     .controller('createContractCtrl', createContractCtrl)
+    .controller('contractsCtrl', contractsCtrl)
 
 
     .controller('dashboardFlotOne', dashboardFlotOne)

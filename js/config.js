@@ -31,6 +31,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         templateUrl: "views/table_constructors.html",
         data: { pageTitle: 'Constructors' }
       })
+      .state('main.contracts', {
+        url: "/contracts",
+        templateUrl: "views/table_contracts.html",
+        data: { pageTitle: 'Contracts' }
+      })
       .state('main.constructors_create', {
         url: "/constructors/create/:address",
         templateUrl: "views/form_constructor.html",
