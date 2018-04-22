@@ -2,7 +2,7 @@
 angular.module('inspinia')
 
   .factory('MainFabricContract',function () {
-    var address = "0x5E8626cD54287A7ff29CD05764446b9E1EF32BC7";
+    var address = "0x66e85ea83610BCCDE18058de7e6d1853c6EE63A2";
 
     var abiMain =
       [
