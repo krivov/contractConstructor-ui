@@ -3372,6 +3372,17 @@ function createContractCtrl($scope, $stateParams, MainFabricContract) {
     };
 
     var setIntervalApply = setInterval(setParams, 100);
+
+    $scope.hash = false;
+
+    $scope.deploy = function () {
+      MainFabricContract.deploy($scope.item, function (hash) {
+        $scope.hash = hash;
+        setTimeout(function () {
+          $scope.$apply();
+        }, 200);
+      });
+    }
   });
 };
 

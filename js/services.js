@@ -2,7 +2,7 @@
 angular.module('inspinia')
 
   .factory('MainFabricContract',function () {
-    var address = "0xde3f4337ea39692228cfaf405536fc3057bb3499";
+    var address = "0x5E8626cD54287A7ff29CD05764446b9E1EF32BC7";
 
     var abiMain =
       [
@@ -339,7 +339,172 @@ angular.module('inspinia')
         }
       ];
 
-    var abiFabric =
+    var abiFabric4 =
+      [
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "name": "_symbol",
+              "type": "string"
+            },
+            {
+              "name": "_decimals",
+              "type": "uint8"
+            },
+            {
+              "name": "_owner",
+              "type": "address"
+            }
+          ],
+          "name": "create",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "name": "_symbol",
+              "type": "string"
+            },
+            {
+              "name": "_decimals",
+              "type": "uint8"
+            },
+            {
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "name": "_totalSupply",
+              "type": "uint256"
+            }
+          ],
+          "name": "create",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "_i",
+              "type": "uint256"
+            }
+          ],
+          "name": "getParam",
+          "outputs": [
+            {
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "name": "paramType",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "mainFabricAddress",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "numParameters",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "params",
+          "outputs": [
+            {
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "name": "paramType",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "title",
+          "outputs": [
+            {
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ]
+    ;
+
+    var abiFabric5 =
       [
         {
           "constant": false,
@@ -473,10 +638,164 @@ angular.module('inspinia')
       ]
     ;
 
+    var abiFabric8 =
+      [
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "name": "_symbol",
+              "type": "string"
+            },
+            {
+              "name": "_decimals",
+              "type": "uint8"
+            },
+            {
+              "name": "_rate",
+              "type": "uint256"
+            },
+            {
+              "name": "_wallet",
+              "type": "address"
+            },
+            {
+              "name": "_cap",
+              "type": "uint256"
+            },
+            {
+              "name": "_openingTime",
+              "type": "uint256"
+            },
+            {
+              "name": "_closingTime",
+              "type": "uint256"
+            }
+          ],
+          "name": "create",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "_i",
+              "type": "uint256"
+            }
+          ],
+          "name": "getParam",
+          "outputs": [
+            {
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "name": "paramType",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "mainFabricAddress",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "numParameters",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "params",
+          "outputs": [
+            {
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "name": "paramType",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "title",
+          "outputs": [
+            {
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ]
+    ;
+
     var mainContract = web3.eth.contract(abiMain).at(address);
 
-    var getConstructor = function (address) {
-      return web3.eth.contract(abiFabric).at(address);
+    var getConstructor = function (address, length) {
+      if (length == 4) {
+        return web3.eth.contract(abiFabric4).at(address);
+      } else if (length == 5) {
+        return web3.eth.contract(abiFabric5).at(address);
+      } else if (length == 8) {
+        return web3.eth.contract(abiFabric8).at(address);
+      } else {
+        return web3.eth.contract(abiFabric4).at(address);
+      }
     };
 
     var factories = {};
@@ -498,7 +817,7 @@ angular.module('inspinia')
                   owner: fabric[1]
                 };
 
-                var constructor = getConstructor(fabric[0]);
+                var constructor = getConstructor(fabric[0], 4);
 
                 constructor.title(function (error, fabricTitle) {
                   factories[fabric[0]].title = fabricTitle;
@@ -536,8 +855,26 @@ angular.module('inspinia')
       return FactoriesPromise;
     };
 
+    var deploy = function (item, cb) {
+      var deployContract = getConstructor(item.addr, item.params.length);
+
+      var args = [];
+      for (var iP = 0; iP < item.params.length; iP++) {
+        args.push(item.params[iP].value);
+      }
+
+      args.push(function (err, hash) {
+        cb(hash);
+      });
+
+      console.log('ARGS', args);
+
+      deployContract.create.apply(this, args);
+    };
+
     return {
       setFactories: setFactories,
-      factories: factories
+      factories: factories,
+      deploy: deploy
     };
   });
